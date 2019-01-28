@@ -6,14 +6,13 @@
 > * 对样式、显示格式、数据输出格式化等易变化部分支持自定义
 
 ## API使用说明
-* 数据对象定义
-```
-// 参考
-导出对象：ExcelExportVO
-导入对象：ExcelImportVO
-```
+* **数据对象定义**
+> 参考
+>> 导出对象：[ExcelExportVO](https://github.com/shuangxikang/excel-converter/blob/master/src/main/test/com/ksx/tools/excel/ExcelExportVO.java)
 
-* Excel文件导出
+>> 导入对象：[ExcelImportVO](https://github.com/shuangxikang/excel-converter/blob/master/src/main/test/com/ksx/tools/excel/ExcelImportVO.java)
+
+* **Excel文件导出**
 ``` 
 //1.0 文件输出流（这里我直接保存到本地当前用户工作目录）
 File file = new File(System.getProperty("user.dir") + "/ExcelConverterExport.xls");
@@ -32,7 +31,7 @@ ExcelStyle excelStyle = new DefaultExcelStyle(ExcelType.xls);
 excelExport.exportExcel(excelExportVOList,"用户信息", fos, excelStyle);
 ```
 
-* Excel文件导入
+* **Excel文件导入**
 ```
 //1.0 初始化导入信息
 ExcelImport excelImport = new ExcelImport(ExcelImportVO.class);
@@ -55,7 +54,7 @@ for (ExcelImportVO excelImportVO : excelImportVOS) {
 ```
 
 ## Spring MVC导入导出Excel处理实例
-* MVC导出
+* **MVC导出**
 ```
 @Controller
 @RequestMapping("/excel")
@@ -94,7 +93,7 @@ public class ExcelConverterController {
 }
 ```
 
-* MVC导入
+* **MVC导入**
 ```
 @Controller
 @RequestMapping("/excel")
