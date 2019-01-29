@@ -24,7 +24,7 @@ List<ExcelExportVO> excelExportVOList = getBeans();
 //3.0 构造导出对象
 ExcelExport excelExport = new ExcelExport();
 
-//4.0 构建导出样式（一般不需定制导出样式等特殊样式，直接使用DefaultExcelStyle即可，ExcelType知道导出 Excel 类型.xls或.xlsx）
+//4.0 构建导出样式（一般不需定制导出样式直接使用DefaultExcelStyle即可，ExcelType指导出Excel类型.xls或.xlsx）
 ExcelStyle excelStyle = new DefaultExcelStyle(ExcelType.xls);
 
 //5.0 导出 Excel数据
