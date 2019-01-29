@@ -35,6 +35,8 @@ public class ExcelExportTest {
 
         //5.0 导出 Excel数据
         excelExport.exportExcel(excelExportVOList,"用户信息", fos, excelStyle);
+
+        System.out.printf("文件已输出到磁盘：" + file.getAbsolutePath());
     }
 
     /**
