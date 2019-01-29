@@ -18,6 +18,29 @@ import java.util.List;
  */
 public class ExcelExportTest {
 
+    @Test
+    public void testExport() throws FileNotFoundException {
+        //1.0 文件输出流（这里我直接保存到本地当前用户工作目录）
+        File file = new File(System.getProperty("user.dir") + "/ExcelConverterExport.xls");
+        FileOutputStream fos = new FileOutputStream(file);
+
+        //2.0 获取导出数据列表
+        List<ExcelExportVO> excelExportVOList = getBeans();
+
+        //3.0 构造导出对象
+        ExcelExport excelExport = new ExcelExport();
+
+        //4.0 构建导出样式（一般不需定制导出样式等特殊样式，直接使用DefaultExcelStyle即可，ExcelType知道导出 Excel 类型.xls或.xlsx）
+        ExcelStyle excelStyle = new DefaultExcelStyle(ExcelType.xls);
+
+        //5.0 导出 Excel数据
+        excelExport.exportExcel(excelExportVOList,"用户信息", fos, excelStyle);
+    }
+
+    /**
+     * 这里初始化一个数据列表，仅进行简单等属性设置演示Excel导出
+     * @return
+     */
     private List<ExcelExportVO> getBeans() {
         List<ExcelExportVO> excelExportVOList = new ArrayList();
 
@@ -51,24 +74,5 @@ public class ExcelExportTest {
         excelExportVOList.add(excelExportVO2);
 
         return excelExportVOList;
-    }
-
-    @Test
-    public void testExport() throws FileNotFoundException {
-        //1.0 文件输出流（这里我直接保存到本地当前用户工作目录）
-        File file = new File(System.getProperty("user.dir") + "/ExcelConverterExport.xls");
-        FileOutputStream fos = new FileOutputStream(file);
-
-        //2.0 获取导出数据列表
-        List<ExcelExportVO> excelExportVOList = getBeans();
-
-        //3.0 构造导出对象
-        ExcelExport excelExport = new ExcelExport();
-
-        //4.0 构建导出样式（一般不需定制导出样式等特殊样式，直接使用DefaultExcelStyle即可，ExcelType知道导出 Excel 类型.xls或.xlsx）
-        ExcelStyle excelStyle = new DefaultExcelStyle(ExcelType.xls);
-
-        //5.0 导出 Excel数据
-        excelExport.exportExcel(excelExportVOList,"用户信息", fos, excelStyle);
     }
 }
